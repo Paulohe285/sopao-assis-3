@@ -51,41 +51,38 @@
           <p>Tem d&uacute;vidas, quer ajudar ou saber mais? A gente responde com carinho.</p>
         </div>
 
-        <div class="contact-grid">
-          <div class="contact-form-col">
-            <h3>Envie uma mensagem</h3>
-            <form class="contact-form" action="https://formspree.io/f/meajvrra" method="POST">
-              <div class="form-row">
-                <div class="field">
-                  <label for="name">Nome completo</label>
-                  <input type="text" id="name" name="name" placeholder="Maria da Silva" required />
-                </div>
-                <div class="field">
-                  <label for="email">E-mail</label>
-                  <input type="email" id="email" name="email" placeholder="maria@email.com" required />
-                </div>
-              </div>
+        <form class="contact-form" id="form-contato">
 
-              <div class="field">
-                <label for="subject">Assunto</label>
-                <select id="subject" name="subject" required>
-                  <option value="">Selecione um assunto&hellip;</option>
-                  <option value="alimentos">Quero doar alimentos</option>
-                  <option value="dinheiro">Quero fazer doa&ccedil;&atilde;o financeira</option>
-                  <option value="voluntario">Quero ser volunt&aacute;rio</option>
-                  <option value="parceria">Parceria / apoio institucional</option>
-                  <option value="outro">Outro assunto</option>
-                </select>
-              </div>
+  <div class="form-row">
+    <div class="field">
+      <label for="name">Nome completo</label>
+      <input type="text" id="name" name="name" placeholder="Maria da Silva" required>
+    </div>
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="maria@email.com" required>
+    </div>
+  </div>
 
-              <div class="field">
-                <label for="message">Mensagem</label>
-                <textarea id="message" name="message" rows="5" placeholder="Escreva sua mensagem aqui&hellip;" required></textarea>
-              </div>
+  <div class="field">
+    <label for="assunto">Assunto</label>
+    <select id="assunto" name="assunto" required>
+      <option value="" disabled selected>Selecione um assunto...</option>
+      <option value="Quero doar alimentos">Quero doar alimentos</option>
+      <option value="Quero ser voluntário">Quero ser voluntário</option>
+      <option value="Preciso de ajuda">Preciso de ajuda</option>
+      <option value="Parcerias e apoio">Parcerias e apoio</option>
+      <option value="Outro assunto">Outro assunto</option>
+    </select>
+  </div>
 
-              <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Enviar mensagem</button>
-            </form>
-          </div>
+  <div class="field">
+    <label for="message">Mensagem</label>
+    <textarea id="message" name="message" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+  </div>
+
+  <button type="submit" class="btn-enviar">Enviar mensagem</button>
+</form>
 
           <div class="contact-info-col">
             <div class="info-item">
@@ -157,5 +154,27 @@
         </div>
       </div>
     </footer>
+    <script>
+  const WHATSAPP = "5518997917614";
+
+  document.getElementById("form-contato").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const assunto = document.getElementById("assunto").value;
+    const mensagem = document.getElementById("message").value.trim();
+
+    const texto =
+      `Olá! Vim pelo site do Sopão Assis 3.\n\n` +
+      `*Nome:* ${nome}\n` +
+      `*E-mail:* ${email}\n` +
+      `*Assunto:* ${assunto}\n\n` +
+      `*Mensagem:*\n${mensagem}`;
+
+    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank", "noopener");
+  });
+</script>
   </body>
 </html>
