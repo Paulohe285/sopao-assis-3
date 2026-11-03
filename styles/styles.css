@@ -868,3 +868,9 @@ form.contact-form {
     grid-template-columns: 1fr;
   }
 }
+
+.brand .logo {
+    max-height: 80px; /* Aumente ou diminua este valor para caber bem na barra verde */
+    width: auto;
+    object-fit: contain; /* Evita que a imagem fique esticada ou amassada */
+}
