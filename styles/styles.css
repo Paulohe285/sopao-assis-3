@@ -869,8 +869,13 @@ form.contact-form {
   }
 }
 
-.brand .logo {
-    max-height: 80px; /* Aumente ou diminua este valor para caber bem na barra verde */
+.logo {
+    max-height: 40px;
     width: auto;
-    object-fit: contain; /* Evita que a imagem fique esticada ou amassada */
+    object-fit: contain; 
+}
+.logo2 {
+    max-height: 100px;
+    width: auto;
+    object-fit: contain; 
 }
